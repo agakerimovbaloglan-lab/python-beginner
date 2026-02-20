@@ -6,14 +6,18 @@ def show_balance(balance):
 
 def deposit():
     print("**********************")
-    amount = float(input("enter an amount to be deposite: "))
-    print("**********************")
-
-    if amount < 0:
-        print("that is not valid amount")
+    try:
+        amount = float(input("enter an amount to be deposit: "))
+    except ValueError:
+        print("Invalid input! Please enter a number.")
         return 0
-    else:
-        return amount
+
+    if amount <= 0:
+        print("Amount must be greater than 0")
+        return 0
+
+    return amount
+
 
 
 def withdraw(balance):
