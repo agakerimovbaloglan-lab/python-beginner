@@ -1,0 +1,19 @@
+import requests
+
+url = "http://api.weatherapi.com/v1/current.json"
+access_key = "3908ef672cad4093aa1161815262303"
+
+sehir = input("sehir: ")
+
+response = requests.get(url, params={
+    "key": access_key,
+    "q": sehir,
+    "lang": "az"
+})
+
+sonuc = response.json()
+sehir = sonuc["location"]["name"]
+havadurumu = sonuc["current"]["temp_c"]
+text = sonuc["current"]["condition"]["text"]
+
+print(f"{sehir} su anda {havadurumu} dece ve {text}.")
